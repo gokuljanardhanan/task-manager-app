@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const TodoForm = ({ addTask }) => {
+const TaskForm = ({ addTask }) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
 
@@ -24,16 +24,20 @@ const TodoForm = ({ addTask }) => {
         placeholder="Title"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
+        maxLength={100}
       />
       <input
         type="text"
         placeholder="Description"
         value={description}
         onChange={(e) => setDescription(e.target.value)}
+        maxLength={200}
       />
-      <button type="submit">Add Task</button>
+      <button type="submit" className="create-btn">
+        Add Task
+      </button>
     </form>
   );
 };
 
-export default TodoForm;
+export default TaskForm;
