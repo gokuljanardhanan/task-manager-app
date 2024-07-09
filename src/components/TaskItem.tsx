@@ -1,9 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, ChangeEvent } from "react";
 
-const TaskItem = ({ task, removeTask, editTask }) => {
-  const [isEditing, setIsEditing] = useState(false);
-  const [newTitle, setNewTitle] = useState(task.title);
-  const [newDescription, setNewDescription] = useState(task.description);
+interface Task {
+  title: string;
+  description?: string;
+  id: number;
+}
+
+interface TaskItemProps {
+  task: Task;
+  removeTask: (id: number) => void;
+  editTask: (id: number, newTitle: string, newDescription?: string) => void;
+}
+
+const TaskItem: React.FC<TaskItemProps> = ({ task, removeTask, editTask }) => {
+  const [isEditing, setIsEditing] = useState<boolean>(false);
+  const [newTitle, setNewTitle] = useState<string>(task.title);
+  const [newDescription, setNewDescription] = useState<string>(
+    task.description || ""
+  );
 
   const handleEdit = () => {
     editTask(task.id, newTitle, newDescription);
@@ -17,13 +31,17 @@ const TaskItem = ({ task, removeTask, editTask }) => {
           <input
             type="text"
             value={newTitle}
-            onChange={(e) => setNewTitle(e.target.value)}
+            onChange={(e: ChangeEvent<HTMLInputElement>) =>
+              setNewTitle(e.target.value)
+            }
             maxLength={100}
           />
           <input
             type="text"
             value={newDescription}
-            onChange={(e) => setNewDescription(e.target.value)}
+            onChange={(e: ChangeEvent<HTMLInputElement>) =>
+              setNewDescription(e.target.value)
+            }
             maxLength={200}
           />
           <button className="save-btn" onClick={handleEdit}>

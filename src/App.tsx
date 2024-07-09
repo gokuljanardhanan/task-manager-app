@@ -1,20 +1,26 @@
 import React, { useState } from "react";
-import TaskList from "./components/TaskList";
-import TaskForm from "./components/TaskForm";
+import TaskList from "./components/TaskList.tsx";
+import TaskForm from "./components/TaskForm.tsx";
 import "./App.css";
 
-const App = () => {
-  const [tasks, setTasks] = useState([]);
+interface Task {
+  title: string;
+  description?: string;
+  id: number;
+}
 
-  const addTask = (task) => {
+const App: React.FC = () => {
+  const [tasks, setTasks] = useState<Task[]>([]);
+
+  const addTask = (task: Task) => {
     setTasks([...tasks, task]);
   };
 
-  const removeTask = (id) => {
+  const removeTask = (id: number) => {
     setTasks(tasks.filter((task) => task.id !== id));
   };
 
-  const editTask = (id, newTitle, newDescription) => {
+  const editTask = (id: number, newTitle: string, newDescription?: string) => {
     setTasks(
       tasks.map((task) =>
         task.id === id
