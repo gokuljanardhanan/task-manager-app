@@ -30,6 +30,14 @@ input[type="text"] {
   width: calc(100% - 22px);
 }
 
+input[type="text"],
+select {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  width: calc(100% - 22px);
+}
+
 button {
   padding: 10px 20px;
   color: white;
@@ -74,6 +82,28 @@ li h3 {
 li p {
   margin: 5px 0 0;
   color: #666;
+}
+
+li .priority {
+  font-size: 12px;
+  padding: 2px 5px;
+  border-radius: 3px;
+  margin-top: 10px;
+}
+
+li .priority.high {
+  background-color: #dc3545;
+  color: white;
+}
+
+li .priority.medium {
+  background-color: #ffc107;
+  color: white;
+}
+
+li .priority.low {
+  background-color: #28a745;
+  color: white;
 }
 
 li div {
@@ -139,4 +169,41 @@ li button.save-btn:hover {
 .item-content{
   display: flex;
   flex-direction: column;
+}
+
+.error {
+  color: #dc3545;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+.all-btn{
+  background-color: #333;
+  color: white;
+  margin-right: 10px;
+}
+
+.active-btn{
+  background-color: #333;
+  color: white;
+  margin-right: 10px;
+}
+
+.completed-btn{
+  background-color: #333;
+  color: white;
+  margin-right: 10px;
+}
+
+.complete-btn.mark{
+   background-color: #28a745;
+}
+
+.complete-btn.unmark{
+  background-color: violet;
+}
+
+
+.highlite{
+  background-color: #28a745;
 }
