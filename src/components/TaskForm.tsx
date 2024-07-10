@@ -43,9 +43,12 @@ const TaskForm: React.FC<TaskFormProps> = ({ addTask }) => {
         type="text"
         placeholder="Title"
         value={title}
-        onChange={(e: ChangeEvent<HTMLInputElement>) =>
-          setTitle(e.target.value)
-        }
+        onChange={(e: ChangeEvent<HTMLInputElement>) => {
+          setTitle(e.target.value);
+          if (error && e.target.value) {
+            setError("");
+          }
+        }}
         maxLength={100}
       />
       {error && <div className="error">{error}</div>}
